@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -68,15 +68,34 @@ public class BestOfTheYearController {
     }
     
     
-
-
-
-    // @GetMapping("/movies/{id}")
-    // public String moviedetail(@PathVariable ("id") String movieId, Model model) {
-    //     model.addAttribute(movieId);
-    //     return "detail";
-    // }
+    @GetMapping("/movies/{id}")
+    public String moviedetail(@PathVariable ("id") int movieId, Model model) {
+        Movie movieFound = null;
+        for(Movie movie : getBestMovies()){
+            if(movie.getId()== (movieId)){
+                movieFound=movie;
+                break;
+            }
+        }
+        model.addAttribute("id",movieId);
+        model.addAttribute("item", movieFound);
+        return "detail";
+    }
     
+    @GetMapping("/songs/{id}")
+    public String songDetail(@PathVariable ("id") int songId, Model model) {
+        Song songFound = null;
+
+        for(Song song : getBestSongs()){
+            if(song.getId() == (songId)){
+                songFound=song;
+                break;
+            }
+        }
+        model.addAttribute("id",songId);
+        model.addAttribute("item", songFound);
+        return "detail";
+    }
 
 
     
@@ -97,7 +116,7 @@ public class BestOfTheYearController {
         songs.add(new Song(1, "Bohemian Rhapsody"));
         songs.add(new Song(2, "Imagine"));
         songs.add(new Song(3, "Smells Like Teen Spirit"));
-        songs.add(new Song(4, "We are the champios"));
+        songs.add(new Song(4, "We are the champions"));
         songs.add(new Song(5, "Waka Waka"));
         return songs;
     };
