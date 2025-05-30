@@ -25,7 +25,7 @@ public class BestOfTheYearController {
         return "index";
     }
 
-    @GetMapping("/movies")
+    @GetMapping("/string/movies")
     public String movieString(Model model) {
         String names = "";
 
@@ -40,7 +40,7 @@ public class BestOfTheYearController {
         
     }
 
-    @GetMapping("/songs")
+    @GetMapping("/string/songs")
     public String songString(Model model) {
         String names= "";
         for (Song song: getBestSongs()){
@@ -53,11 +53,29 @@ public class BestOfTheYearController {
         return "listAsString";
     }
     
-    @GetMapping("/movies/{id}")
-    public String moviedetail(@PathVariable ("id") String movieId, Model model) {
-        model.addAttribute(movieId);
-        return "detail";
+    @GetMapping("/movies")
+    public String moviesList(Model model) {
+        model.addAttribute("titolo", "Movies");
+        model.addAttribute("list", getBestMovies());
+        return "list";
     }
+
+    @GetMapping("/songs")
+    public String songsList(Model model) {
+        model.addAttribute("titolo", "Songs");
+        model.addAttribute("list", getBestSongs());
+        return "list";
+    }
+    
+    
+
+
+
+    // @GetMapping("/movies/{id}")
+    // public String moviedetail(@PathVariable ("id") String movieId, Model model) {
+    //     model.addAttribute(movieId);
+    //     return "detail";
+    // }
     
 
 

@@ -6,7 +6,10 @@
 <body>
 
     <main>
-        <p th:text = "${title}"></p>
+        <ul>
+        <h1 th:text= "${titolo}"></h1>
+        <li th:each="movie: ${list}"   th:text ="${movie.titolo}"></li>
+        </ul>
     </main>
 </body>
 </html>
