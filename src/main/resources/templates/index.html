@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Best of the year</title>
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}" />
-</head>
+    <head th:replace="~{fragments/head :: head}"></head>
 <body>
-    <header>
-        <div>
-            <h1 th:text="'Best of the year by' + ' ' + ${name}"/>
-        </div>
+    <header class="container">
+        <div th:replace="~{fragments/navbar :: navbar}"></div>
+        
     </header>
 
-    <main>
-        <p th:text = "${titolo}"></p>
+    <main class="container">
+         <h1 class="text-center" th:text="'Best of the year by ' + ${name}"></h1>
+         <div class="banner d-flex py-3 mb-3">
+            <img class="img-fluid m-auto" th:src="@{/img/numero-2025.jpg}">
+         </div>
+         <div>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe, quasi quidem. Tenetur tempore eius dicta vero tempora accusamus voluptate quasi quo laboriosam doloremque ullam magni recusandae, cum quia perferendis necessitatibus?
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque praesentium quibusdam at ex fuga, perferendis laboriosam neque, dolor culpa quaerat ullam adipisci non laudantium provident amet tempore labore tenetur optio!
+            </p>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto nisi eos voluptate nesciunt at temporibus, neque aliquam fugiat magnam doloribus, provident harum officia maiores quod repellat quaerat odio unde hic.
+            </p>
+         </div>
+
     </main>
 
 </body>
